@@ -5,8 +5,6 @@
   "dependencies": {
     "@cypress/webpack-preprocessor": "^5.4.1",
     "@testing-library/cypress": "^6.0.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.1.2",
     "@types/enzyme": "^3.10.5",
     "@types/jest": "^24.9.1",
@@ -15,10 +13,13 @@
     "@types/react-dom": "^16.9.8",
     "cypress": "^4.8.0",
     "cypress-cucumber-preprocessor": "^2.5.0",
+    "dotenv": "^8.2.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.5.0",
+    "faker": "^4.1.0",
     "fetch-mock": "^9.10.1",
+    "node-fetch": "^2.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
@@ -57,6 +58,8 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
     "redux-devtools": "^3.5.0",
     "redux-mock-store": "^1.5.4"
   }
