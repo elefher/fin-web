@@ -18,6 +18,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.5.0",
+    "faker": "^4.1.0",
     "fetch-mock": "^9.10.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

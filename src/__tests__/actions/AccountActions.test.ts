@@ -2,9 +2,9 @@ import configureStore from 'redux-mock-store';
 import {
     fetchAccounts,
     Currency
-} from '../actions';
+} from '../../actions';
 import thunk from "redux-thunk";
-import {FETCH_ACCOUNTS} from "../constants";
+import {FETCH_ACCOUNTS} from "../../constants";
 
 const mockStore = configureStore([thunk]);
 const store = mockStore();

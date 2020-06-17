@@ -8,7 +8,13 @@ export enum Currency {
     GBP = '£',
 }
 
-interface IAccount {
+export enum AccountTypes {
+    DEBIT_CARD = 'Debit Card',
+    CREDIT_CARD = 'Credit Card',
+    INVESTMENTS = 'Credit Card',
+}
+
+export interface IAccount {
     id: string;
     name: string;
     type: string;
