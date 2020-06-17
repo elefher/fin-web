@@ -3,23 +3,43 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@cypress/webpack-preprocessor": "^5.4.1",
+    "@testing-library/cypress": "^6.0.0",
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
+    "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
+    "@types/enzyme": "^3.10.5",
+    "@types/jest": "^24.9.1",
+    "@types/node": "^12.12.47",
+    "@types/react": "^16.9.36",
+    "@types/react-dom": "^16.9.8",
+    "cypress": "^4.8.0",
+    "cypress-cucumber-preprocessor": "^2.5.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.5.0",
+    "fetch-mock": "^9.10.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "ts-jest": "^26.1.0",
     "typescript": "~3.7.2"
   },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
+  },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "BROWSER='google-chrome-stable' react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:acceptance": "cypress run",
+    "test:acceptance:interactive": "cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,5 +55,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "redux-devtools": "^3.5.0",
+    "redux-mock-store": "^1.5.4"
   }
 }
