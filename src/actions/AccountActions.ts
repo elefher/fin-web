@@ -25,34 +25,17 @@ export interface IAccount {
 }
 
 export const fetchAccounts: any = () => (dispatch, getState): void => {
-    let accounts: IAccount[] = [];
-    accounts = [
-        {
-            id: '1',
-            name: 'Account 1',
-            type: 'Account type',
-            currency: Currency.EUR,
-            note: 'NOTES',
-            balance: 12000,
-        }, {
-            id: '2',
-            name: 'Account 2',
-            type: 'Account type',
-            currency: Currency.GBP,
-            note: 'NOTES uk',
-            balance: 1000,
-        }, {
-            id: '3',
-            name: 'Account 3',
-            type: 'Account type',
-            currency: Currency.USD,
-            note: 'NOTES usd',
-            balance: 1000,
-        },
-    ];
-    
-
-    dispatch({type: FETCH_ACCOUNTS, payload: accounts});
+    fetch(process.env.REACT_APP_API_URL + '/accounts')
+        .then(res => res.json())
+        .then(res => {
+            if (res.error) {
+                throw(res.error);
+            }
+            dispatch({type: FETCH_ACCOUNTS, payload: res});
+        })
+        .catch((res) => {
+            dispatch({type: FETCH_ACCOUNTS, payload: res});
+        });
 };
 
 // export const addAccount: any = (account) => (dispatch, getState): void => {

@@ -8,6 +8,7 @@ describe('Account reducer', () => {
     })
 
     it('should return the given accounts on FETCH_ACCOUNTS type', () => {
+        
         const accounts = AccountFakeData.Accounts()
         expect(
             accountReducer([], {
