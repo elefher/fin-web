@@ -2,7 +2,7 @@ import {Currency, IAccount, AccountTypes} from "../../actions/AccountActions";
 import _ from 'lodash';
 import faker from 'faker';
 
-export const Accounts: (numOfAccounts?: number) => void = (numOfAccounts = 5): Array<IAccount> => {
+export const createAccounts = (numOfAccounts = 5): Array<IAccount> => {
     const accounts: Array<IAccount> = [];
 
     for (let i = 0; i < numOfAccounts; i++) {

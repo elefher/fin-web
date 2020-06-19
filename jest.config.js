@@ -13,4 +13,5 @@ module.exports = {
         "^@components(.*)$": "<rootDir>/src/components$1",
     },
     transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
+    setupFiles: ["dotenv/config"],
 }
