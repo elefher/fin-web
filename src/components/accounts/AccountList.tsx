@@ -1,7 +1,10 @@
-import React, {CSSProperties, HTMLProps, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {fetchAccounts} from "../../actions";
 import {IAccount} from "../../actions/AccountActions";
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import {Link} from 'react-router-dom';
 
 interface Props {
     accounts: IAccount[];
@@ -15,6 +18,8 @@ const AccountList: React.FC<Props> = ({accounts, fetchAccounts}) => {
     }, []);
 
     const AccountList = () => {
+        console.log('DDDD');
+        console.log(accounts);
         if (accounts) {
             const accountList = accounts.map((account) =>
                 <li key={account.id} style={styles.accountList}>
@@ -36,13 +41,20 @@ const AccountList: React.FC<Props> = ({accounts, fetchAccounts}) => {
 
     return (
         <div style={styles.accounts}>
-            {AccountList()}
+            <div>
+                {AccountList()}
+            </div>
+            <Link to="/accounts/new">
+                <Fab color="secondary" aria-label="add">
+                    <AddIcon/>
+                </Fab>
+            </Link>
         </div>
     );
 };
 
 const styles = {
-    accounts:{
+    accounts: {
         width: '500px',
     },
     accountList: {
@@ -50,7 +62,7 @@ const styles = {
         listStyle: 'none',
         textAlign: 'left' as 'left',
     },
-    listDetails:{
+    listDetails: {
         marginLeft: '10px'
     }
 }

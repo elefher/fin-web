@@ -1,0 +1,15 @@
+.account-form {
+    width: 30%;
+    margin: 0 auto;
+}
+.account-form div {
+    width: 100%;
+    float: left;
+    margin: 7px auto;
+}
+#selectors{
+    width: 100%;
+}
+#selectors div{
+    width: 100%;
+}

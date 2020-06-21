@@ -14,7 +14,7 @@ export enum Currency {
 export enum AccountTypes {
     DEBIT_CARD = 'Debit Card',
     CREDIT_CARD = 'Credit Card',
-    INVESTMENTS = 'Credit Card',
+    INVESTMENTS = 'Investments',
 }
 
 export interface IAccount {
