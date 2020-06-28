@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Fin Web
+[![CircleCI](https://circleci.com/gh/elefher/fin-web.svg?style=shield&circle-token=9452a185abe10460dbc79269efb31f8a526de670)](<LINK>)
+
 ## Available Scripts
 
 In the project directory, you can run:
