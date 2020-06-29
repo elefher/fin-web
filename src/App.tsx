@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import './App.css';
-import {BrowserRouter, Route, Link} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 
 import AccountList from './components/accounts/AccountList';
 import AccountUpdate from './components/accounts/AccountUpdate';

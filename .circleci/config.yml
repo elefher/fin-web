@@ -6,6 +6,7 @@ jobs:
   build:
     docker:
       - image: "cimg/base:stable"
+    working_directory: ~/fin-web
     steps:
       - checkout
       - node/install:
@@ -14,22 +15,31 @@ jobs:
       - run:
           command: npm ci
       - run: node --version
+      - run: git pull
+      - run: npm install
+      - run: CI=false npm run build
+      - save_cache:
+          key: build1
+          paths:
+            - build
+            - ./build
 
   deploy:
     machine:
       enabled: true
+    working_directory: ~/fin-web
     steps:
+      - checkout
       - add_ssh_keys:
           fingerprints:
             - "d9:05:3e:62:c8:e6:04:32:84:39:f5:30:38:a3:3c:d3"
+      - restore_cache:
+          key: build1
+      - run: ls -al
       - run:
-          name: Deploy Over SSH
+          name: Deploy over ssh
           command: |
-            ssh $SSH_USER@$SSH_HOST 'cd /var/www/html/fin-web/ &&
-            git checkout master &&
-            git pull &&
-            npm install && 
-            npm run build'
+            scp -r ~/fin-web/build/* "$SSH_USER@$SSH_HOST:/var/www/html/fin-web"          
 
 workflows:
   version: 2
