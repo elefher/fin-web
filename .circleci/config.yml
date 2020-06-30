@@ -14,8 +14,6 @@ jobs:
           node-version: 12.18.1
       - run:
           command: npm ci
-      - run: node --version
-      - run: git pull
       - run: npm install
       - run: CI=false npm run build
       - save_cache:
@@ -35,7 +33,6 @@ jobs:
             - "d9:05:3e:62:c8:e6:04:32:84:39:f5:30:38:a3:3c:d3"
       - restore_cache:
           key: build1
-      - run: ls -al
       - run:
           name: Deploy over ssh
           command: |
