@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, forwardRef} from 'react';
 import './Menu.css';
 import {Link} from 'react-router-dom';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
@@ -10,16 +10,21 @@ import Divider from '@material-ui/core/Divider';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import HomeIcon from '@material-ui/icons/Home';
 
-const Menu: FC<any> = (props) => {
-    const HomeLink = props => <Link to="/" {...props}/>;
-    const AccountsLink = props => <Link to="/accounts" {...props}/>;
+const Menu: FC<any> = () => {
+    const HomeLink = forwardRef((props, ref) => {
+        return <Link to="/" {...props}/>;
+    });
+
+    const AccountsLink = forwardRef((props, ref) => {
+        return <Link to="/accounts" {...props}/>;
+    });
 
     return (
         <div>
             <nav className="menu" tabIndex={0}>
                 <div className="smartphone-menu-trigger"></div>
                 <header className="avatar">
-                    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg"/>
+                    <img alt="profile-img" src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg"/>
                     <h2>John D.</h2>
                 </header>
                 <List component="nav" aria-label="main mailbox folders">

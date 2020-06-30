@@ -12,14 +12,12 @@ interface Props {
 }
 
 const AccountList: React.FC<Props> = ({accounts, fetchAccounts}) => {
-
+    
     useEffect(() => {
-        fetchAccounts();
-    }, []);
+        fetchAccounts()
+    }, [fetchAccounts]);
 
     const AccountList = () => {
-        console.log('DDDD');
-        console.log(accounts);
         if (accounts) {
             const accountList = accounts.map((account) =>
                 <li key={account.id} style={styles.accountList}>
