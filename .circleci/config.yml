@@ -2,6 +2,11 @@ version: 2.1
 orbs:
   node: circleci/node@3.0.0
 
+executors:
+  common:
+    docker:
+      - image: circleci/node:12.18.1
+
 jobs:
   build:
     docker:
@@ -22,6 +27,13 @@ jobs:
             - build
             - ./build
 
+  test:
+    executor: common
+    steps:
+      - checkout
+      - run:
+          command: npm run test
+
   deploy:
     machine:
       enabled: true
@@ -40,15 +52,21 @@ jobs:
 
 workflows:
   version: 2
-  build-and-deploy:
+  pipeline:
     jobs:
       - build:
           filters:
             branches:
               only: master
-      - deploy:
+      - test:
           requires:
             - build
+          filters:
+            branches:
+              only: master
+      - deploy:
+          requires:
+            - test
           filters:
             branches:
               only: master
