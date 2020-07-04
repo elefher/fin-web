@@ -1,6 +1,11 @@
 const esModules = ['@agm', 'ngx-bootstrap', 'lodash-es'].join('|');
 
 module.exports = {
+    moduleDirectories: [
+        'node_modules',
+        'utils',
+        __dirname,
+    ],
     roots: ["<rootDir>/src"],
     transform: {
         "^.+\\.tsx?$": "ts-jest"

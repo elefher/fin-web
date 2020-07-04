@@ -10,7 +10,7 @@ export const createAccounts = (numOfAccounts = 5): Array<IAccount> => {
             id: faker.random.uuid(),
             name: faker.name.findName(),
             type: _.sample(Object.values(AccountTypes)),
-            balance: faker.finance.amount(),
+            balance: parseFloat(faker.finance.amount()),
             currency: _.sample(Object.values(Currency)),
             note: faker.lorem.text(),
         });

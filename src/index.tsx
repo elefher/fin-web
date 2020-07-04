@@ -6,6 +6,11 @@ import * as serviceWorker from './serviceWorker';
 import store from 'reducers';
 import {Provider} from 'react-redux';
 
+if (process.env.NODE_ENV === 'development') {
+    const { worker } = require('./mocks/browser');
+    worker.start();
+}
+
 ReactDOM.render(
     <Provider store={store}>
         <App/>

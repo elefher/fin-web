@@ -6,6 +6,7 @@ import AccountList from './components/accounts/AccountList';
 import AccountUpdate from './components/accounts/AccountUpdate';
 import AccountCreate from "./components/accounts/AccountCreate";
 import AccountDelete from "./components/accounts/AccountDelete";
+import AccountShow from "./components/accounts/AccountShow";
 import Menu from "./components/home/menu/Menu";
 
 const HomePage = () => {
@@ -22,6 +23,7 @@ const App: FC<any> = () => {
                     <Menu/>
                     <Route path="/" exact component={HomePage}/>
                     <Route path="/accounts" exact component={AccountList}/>
+                    <Route path="/account/show" exact component={AccountShow}/>
                     <Route path="/accounts/new" exact component={AccountCreate}/>
                     <Route path="/accounts/update" exact component={AccountUpdate}/>
                     <Route path="/accounts/delete" exact component={AccountDelete}/>

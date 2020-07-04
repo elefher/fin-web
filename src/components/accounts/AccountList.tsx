@@ -5,6 +5,7 @@ import {IAccount} from "../../actions/AccountActions";
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import {Link} from 'react-router-dom';
+import _ from 'lodash';
 
 interface Props {
     accounts: IAccount[];
@@ -12,13 +13,13 @@ interface Props {
 }
 
 const AccountList: React.FC<Props> = ({accounts, fetchAccounts}) => {
-    
+
     useEffect(() => {
         fetchAccounts()
     }, [fetchAccounts]);
 
     const AccountList = () => {
-        if (accounts) {
+        if (!_.isEmpty(accounts)) {
             const accountList = accounts.map((account) =>
                 <li key={account.id} style={styles.accountList}>
                     <span style={styles.listDetails}>{account.name}</span>
@@ -33,7 +34,7 @@ const AccountList: React.FC<Props> = ({accounts, fetchAccounts}) => {
             );
         }
         return (
-            <div>Loading...</div>
+            <div>Press "+" button to create an account</div>
         );
     }
 

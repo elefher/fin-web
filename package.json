@@ -13,6 +13,7 @@
     "@types/node": "^12.12.47",
     "@types/react": "^16.9.36",
     "@types/react-dom": "^16.9.8",
+    "axios": "^0.19.2",
     "cypress": "^4.8.0",
     "cypress-cucumber-preprocessor": "^2.5.0",
     "dotenv": "^8.2.0",
@@ -41,8 +42,8 @@
     "start": "BROWSER='google-chrome-stable' react-scripts start",
     "build": "react-scripts build",
     "serve:prod": "serve -s build",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test:unit": "jest",
+    "test:unit:watch": "jest --watch",
     "test:acceptance": "cypress run",
     "test:acceptance:interactive": "cypress open"
   },
@@ -64,6 +65,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
+    "msw": "^0.19.5",
     "redux-devtools": "^3.5.0",
     "redux-mock-store": "^1.5.4",
     "style-loader": "^1.2.1"

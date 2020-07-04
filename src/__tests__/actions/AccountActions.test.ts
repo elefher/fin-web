@@ -9,9 +9,13 @@ import thunk from "redux-thunk";
 import fetchMock from "fetch-mock";
 import {createAccounts} from "../../common/fake/Accounts";
 import {ADD_ACCOUNT, DELETE_ACCOUNT, FETCH_ACCOUNTS, UPDATE_ACCOUNT} from "../../constants";
+import axios from 'axios';
 
 const mockStore = configureStore([thunk]);
 let store = mockStore();
+
+jest.mock('axios');
+const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 describe('AccountActions', () => {
     beforeEach(() => {
@@ -26,7 +30,7 @@ describe('AccountActions', () => {
         const accounts = createAccounts(1);
 
         it('Should dispatch FETCH_ACCOUNTS and successful payload with accounts', () => {
-            fetchMock.getOnce(process.env.REACT_APP_API_URL + '/accounts', accounts);
+            mockedAxios.get.mockImplementationOnce(() => Promise.resolve({data: accounts}));
 
             const expected = [{type: FETCH_ACCOUNTS, payload: accounts}];
             return store.dispatch(fetchAccounts()).then(() => {
@@ -35,7 +39,7 @@ describe('AccountActions', () => {
         });
 
         it('Should dispatch FETCH_ACCOUNTS and return exception when the request is not successful', () => {
-            fetchMock.catch('*');
+            mockedAxios.get.mockImplementation(() => Promise.reject({}));
 
             const expected = [{type: FETCH_ACCOUNTS, ex: expect.anything()}];
             return store.dispatch(fetchAccounts()).then(() => {

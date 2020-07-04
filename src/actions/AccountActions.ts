@@ -4,18 +4,19 @@ import {
     UPDATE_ACCOUNT,
     DELETE_ACCOUNT
 } from '../constants';
+import axios from 'axios';
 
 export enum Currency {
     EUR = '€',
     USD = '$',
     GBP = '£',
-}
+};
 
 export enum AccountTypes {
     DEBIT_CARD = 'Debit Card',
     CREDIT_CARD = 'Credit Card',
     INVESTMENTS = 'Investments',
-}
+};
 
 export interface IAccount {
     id: string;
@@ -25,16 +26,12 @@ export interface IAccount {
     currency: Currency;
     note?: string;
     user?: object;
-}
+};
 
 export const fetchAccounts: any = () => (dispatch): Promise<Response> => {
-    return fetch(process.env.REACT_APP_API_URL + '/accounts')
-        .then(res => res.json())
+    return axios.get(process.env.REACT_APP_API_URL + '/accounts')
         .then(res => {
-            if (res.error) {
-                throw(res.error);
-            }
-            dispatch({type: FETCH_ACCOUNTS, payload: res});
+            dispatch({type: FETCH_ACCOUNTS, payload: res.data});
         })
         .catch(ex => dispatch({type: FETCH_ACCOUNTS, ex}));
 };

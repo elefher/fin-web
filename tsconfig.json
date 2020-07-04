@@ -19,7 +19,12 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "paths": {
+      "test-utils": [
+        "./utils/test-utils"
+      ]
+    }
   },
   "include": [
     "src/**/*"
