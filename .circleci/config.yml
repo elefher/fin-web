@@ -9,18 +9,22 @@ executors:
 
 jobs:
   build:
-    docker:
-      - image: "cimg/base:stable"
+    executor: common
     working_directory: ~/fin-web
     steps:
       - checkout
-      - node/install:
-          npm-version: latest
-          node-version: 12.18.1
       - run:
           command: npm ci
-      - run: npm install
       - run: CI=false npm run build
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
+            - build1
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
       - save_cache:
           key: build1
           paths:
@@ -31,8 +35,8 @@ jobs:
     executor: common
     steps:
       - checkout
-      - run:
-          command: npm run test
+      - run: npm ci
+      - run: npm run test:ci
 
   deploy:
     machine:

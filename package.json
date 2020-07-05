@@ -3,24 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@cypress/webpack-preprocessor": "^5.4.1",
-    "@material-ui/core": "^4.10.2",
+    "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
-    "@testing-library/cypress": "^6.0.0",
     "@testing-library/user-event": "^7.1.2",
     "@types/enzyme": "^3.10.5",
     "@types/jest": "^24.9.1",
     "@types/node": "^12.12.47",
-    "@types/react": "^16.9.36",
+    "@types/react": "^16.9.41",
     "@types/react-dom": "^16.9.8",
-    "cypress": "^4.8.0",
-    "cypress-cucumber-preprocessor": "^2.5.0",
     "dotenv": "^8.2.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.5.0",
     "faker": "^4.1.0",
-    "fetch-mock": "^9.10.1",
+    "fetch-mock": "^9.10.3",
     "node-fetch": "^2.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -31,20 +27,16 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "serve": "^11.3.2",
-    "ts-jest": "^26.1.0",
+    "ts-jest": "^26.1.1",
     "typescript": "~3.7.2"
-  },
-  "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true
   },
   "scripts": {
     "start": "BROWSER='google-chrome-stable' react-scripts start",
     "build": "react-scripts build",
     "serve:prod": "serve -s build",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "test:acceptance": "cypress run",
-    "test:acceptance:interactive": "cypress open"
+    "test:ci":"jest --ci --runInBand --reporters=default",
+    "test:watch": "jest --watch"
   },
   "eslintConfig": {
     "extends": "react-app"
